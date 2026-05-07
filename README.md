@@ -39,14 +39,6 @@ Each file is named `YYYY-MM-DD.csv` (UTC). Rows are appended each run, deduplica
 | `aip_version` | API snapshot version |
 | `pulled_at` | When this row was collected (UTC) |
 
-## Setup
-
-1. Create a new GitHub repo and push this folder to it.
-2. Go to **Actions** → enable workflows if prompted.
-3. The workflow runs automatically on the schedule. You can also trigger it manually from the Actions tab.
-
-No secrets or tokens needed — the Hydro-Québec API is public, and the workflow uses the built-in `GITHUB_TOKEN` to commit data.
-
 ## Loading data in R
 
 ```r
@@ -61,9 +53,3 @@ outages <- list.files("data/outages", full.names = TRUE) |>
 # Load a specific date
 today <- read_csv("data/outages/2026-05-07.csv")
 ```
-
-## Notes
-
-- GitHub Actions scheduled jobs can be delayed a few minutes under load — this is normal.
-- GitHub may pause scheduled workflows on repos with no activity for 60 days. Push a commit to re-enable.
-- Each daily CSV grows throughout the day; a full year of 15-minute snapshots is roughly 50–200 MB depending on outage volume.
